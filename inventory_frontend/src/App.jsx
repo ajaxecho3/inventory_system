@@ -18,7 +18,7 @@ function App() {
 
 
   return (
-    <div className='container'>
+    <div className=' max-w-screen-xl mx-auto'>
       <h1>Product Inventory</h1>
       <table className='product-table'>
         <thead className='product-thead'>

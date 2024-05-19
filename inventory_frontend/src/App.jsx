@@ -19,6 +19,7 @@ function App() {
 
   return (
     <div className='container'>
+      <h1>Product Inventory</h1>
       <table className='product-table'>
         <thead className='product-thead'>
           <tr>

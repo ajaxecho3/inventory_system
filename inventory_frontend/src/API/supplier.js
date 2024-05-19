@@ -1,26 +1,23 @@
 
-
 const baseURL = 'http://localhost:5000';
 
-const getproducts = async () => {
-  const response = await fetch(`${baseURL}/products`);
+
+const getSuppliers = async () => {
+  const response = await fetch(`${baseURL}/suppliers`);
 
   if (response.status === 200) {
     const data = await response.json();
     return data;
   }
-
-
 }
 
-
-const createProduct = async (product) => {
-  const response = await fetch(`${baseURL}/product`, {
+const createSupplier = async (supplier) => {
+  const response = await fetch(`${baseURL}/supplier`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(product),
+    body: JSON.stringify(supplier),
   });
 
   if (response.status === 201) {
@@ -29,13 +26,13 @@ const createProduct = async (product) => {
   }
 }
 
-const updateProduct = async (product) => {
-  const response = await fetch(`${baseURL}/product/${product.id}`, {
+const updateSupplier = async (supplier) => {
+  const response = await fetch(`${baseURL}/supplier/${supplier.id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(product),
+    body: JSON.stringify(supplier),
   });
 
   if (response.status === 200) {
@@ -45,8 +42,9 @@ const updateProduct = async (product) => {
 }
 
 
-const deleteProduct = async (id) => {
-  const response = await fetch(`${baseURL}/product/${id}`, {
+
+const deleteSupplier = async (id) => {
+  const response = await fetch(`${baseURL}/supplier/${id}`, {
     method: 'DELETE',
   });
 
@@ -56,8 +54,8 @@ const deleteProduct = async (id) => {
 }
 
 
-const getSuppliersList = async () => {
-  const response = await fetch(`${baseURL}/supplierlist`);
+const getProductsBySupplierId = async (id) => {
+  const response = await fetch(`${baseURL}/supplier/${id}/products`);
 
   if (response.status === 200) {
     const data = await response.json();
@@ -67,6 +65,4 @@ const getSuppliersList = async () => {
 
 
 
-
-
-export { getproducts, createProduct, updateProduct, deleteProduct, getSuppliersList };
+export { getSuppliers, createSupplier, updateSupplier, deleteSupplier, getProductsBySupplierId };

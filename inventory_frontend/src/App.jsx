@@ -18,6 +18,7 @@ const ProductModal = ({
     category: '',
     description: '',
     brand: '',
+    supplier_id: ''
 
   });
 
@@ -30,6 +31,7 @@ const ProductModal = ({
       category: defaultValue.category,
       description: defaultValue.description,
       brand: defaultValue.brand,
+      supplier_id: defaultValue.supplier_id
 
     });
   }, [defaultValue])
@@ -39,6 +41,9 @@ const ProductModal = ({
 
   const handleUpdatedProduct = (currentProduct, id) => {
 
+    if (!currentProduct.name || !currentProduct.price || !currentProduct.quantity || !currentProduct.category || !currentProduct.description || !currentProduct.brand) {
+      return alert('Please fill all the fields')
+    }
     const updatedProduct = {
       id: id,
       ...currentProduct
@@ -170,6 +175,10 @@ function App() {
 
   console.log(suppliierList)
   const handleCreateProduct = (currentProduct) => {
+    if (!currentProduct.name || !currentProduct.price || !currentProduct.quantity || !currentProduct.category || !currentProduct.description || !currentProduct.brand) {
+      return alert('Please fill all the fields')
+    }
+
     createProduct(currentProduct).then(() => {
       const products = getproducts();
       products.then((data) => {

@@ -53,6 +53,11 @@ function Supplier() {
   }
 
   const handleAddNewSupplier = (supplier) => {
+    if (supplier.name === '' || supplier.address === '' || supplier.mobile === '') {
+      alert('Please fill all fields');
+      return;
+    }
+
     createSupplier(supplier).then(() => {
       handlegetSuppliers();
       setCurrentSupplier({

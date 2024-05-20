@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react'
 
-import { createSupplier, getProductsBySupplierId, getSuppliers } from './API/supplier';
+import { createSupplier, deleteSupplier, getProductsBySupplierId, getSuppliers } from './API/supplier';
 import Modal from './components/Modal';
 
 
@@ -60,6 +60,12 @@ function Supplier() {
         address: '',
         mobile: '',
       });
+    });
+  }
+
+  const handleDeleteSupplier = (supplierId) => {
+    deleteSupplier(supplierId).then(() => {
+      handlegetSuppliers();
     });
   }
 
@@ -134,7 +140,7 @@ function Supplier() {
 
                       {
                         supplier.products === 0 ? (
-                          <button className='py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg'>Delete</button>
+                          <button onClick={() => handleDeleteSupplier(supplier.id)} className='py-2 leading-none px-3 font-medium text-red-600 hover:text-red-500 duration-150 hover:bg-gray-50 rounded-lg'>Delete</button>
                         ) : (
                           null
                         )
